@@ -23,6 +23,9 @@ class HomeController extends AControllerRedirect
 
     public function login()
     {
+        if (Auth::isLogged()){
+            $this->redirect('home');
+        }
         return $this->html(
             []
         );
@@ -61,12 +64,16 @@ class HomeController extends AControllerRedirect
     public function update()
     {
         $adds = Add::getAll();
+        $productids = Add::getAll();
+        $_SESSION['id'] = $this->request()->getValue('productid');
+
         if (!Auth::isLogged()){
             $this->redirect('home');
         }
         return $this->html(
             [
-                'adds' => $adds
+                'adds' => $adds,
+                'productids' => $productids
             ]
         );
     }
@@ -85,17 +92,27 @@ class HomeController extends AControllerRedirect
             $newAdd->setPriceWithoutVAT($this->request()->getValue('price_withoutVAT'));
             $newAdd->setAmount($this->request()->getValue('amount'));
             $newAdd->save();
+            $_SESSION['message'] = "Record has been saved!";
+            $_SESSION['msg_type'] = "success";
+
             }
+
         $this->redirect('home', 'addProduct');
     }
 
 
     public function delete()
     {
+
+        if(!Auth::isLogged()){
+            $this->redirect('home');
+        }
         $productId = $this->request()->getValue('productid');
         if($productId > 0){
             $add = Add::getOne($productId);
             $add->delete();
+            $_SESSION['message'] = "Record has been deleted!";
+            $_SESSION['msg_type'] = "danger";
 
         }
 
@@ -105,16 +122,22 @@ class HomeController extends AControllerRedirect
 
     public function updateProduct()
     {
+        if(!Auth::isLogged()){
+            $this->redirect('home');
+        }
 
         $productId = $this->request()->getValue('productid');
         if($productId > 0){
-            $add = Add::getOne('productid');
+            $add = Add::getOne($productId);
             $add->setName($this->request()->getValue('name'));
             $add->setProductNumber($this->request()->getValue('product_number'));
             $add->setPrice($this->request()->getValue('price'));
             $add->setPriceWithoutVAT($this->request()->getValue('price_withoutVAT'));
             $add->setAmount($this->request()->getValue('amount'));
             $add->save();
+
+            $_SESSION['message'] = "Record has been saved!";
+            $_SESSION['msg_type'] = "success";
 
 
 

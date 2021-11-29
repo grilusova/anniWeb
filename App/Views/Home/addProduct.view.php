@@ -7,6 +7,15 @@
   <div class="container py-5">
     <form method="post" action="?c=home&a=upload">
 
+        <?php if (isset($_SESSION['message'])): ?>
+
+            <div class="alert alert-<?=$_SESSION['msg_type']?>">
+                <?php echo $_SESSION['message'];
+                unset($_SESSION['message']);
+                ?>
+            </div>
+        <?php endif ?>
+
       <div class="mb-4">
         <label>Názov produktu</label>
         <input type="text" class="form-control" name="name">

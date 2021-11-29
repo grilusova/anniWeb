@@ -1,7 +1,16 @@
-<?php /** @var Array $data */?>
+<?php /** @var Array $data */ ?>
 
 <div class="productList">
 <div class="container py-5">
+
+   <?php if (isset($_SESSION['message'])): ?>
+
+    <div class="alert alert-<?=$_SESSION['msg_type']?>">
+        <?php echo $_SESSION['message'];
+              unset($_SESSION['message']);
+        ?>
+    </div>
+    <?php endif ?>
 
     <button class="btn4 btn-primary my-5">
         <a class="nav-link" href="?c=home&a=addProduct">Pridaj produkt</a>
@@ -31,6 +40,7 @@
             <td>
                 <a href="?c=home&a=update&productid=<?= $add->getId() ?>" class="btn btn-primary">Update</a>
                 <a href="?c=home&a=delete&productid=<?= $add->getId() ?>" class="btn btn-danger">Delete</a>
+
             </td>
         </tr>
         <?php } ?>
