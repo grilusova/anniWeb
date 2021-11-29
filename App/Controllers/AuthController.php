@@ -17,11 +17,8 @@ class AuthController extends AControllerRedirect
     }
 
     public function loginForm(){
-        if(Auth::isLogged()){
-            $this->redirect('home');
-        }
-        return $this->html(
-            [
+
+        return $this->html( [
                 'error' => $this->request()->getValue('error')
             ]
         );

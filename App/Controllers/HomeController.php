@@ -21,15 +21,6 @@ class HomeController extends AControllerRedirect
         return $this->html();
     }
 
-    public function login()
-    {
-        if (Auth::isLogged()){
-            $this->redirect('home');
-        }
-        return $this->html(
-            []
-        );
-    }
 
     public function FAQ()
     {
@@ -64,7 +55,6 @@ class HomeController extends AControllerRedirect
     public function update()
     {
         $adds = Add::getAll();
-        $productids = Add::getAll();
         $_SESSION['id'] = $this->request()->getValue('productid');
 
         if (!Auth::isLogged()){
@@ -72,8 +62,8 @@ class HomeController extends AControllerRedirect
         }
         return $this->html(
             [
-                'adds' => $adds,
-                'productids' => $productids
+                'adds' => $adds
+
             ]
         );
     }

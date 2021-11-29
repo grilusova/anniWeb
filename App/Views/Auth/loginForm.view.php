@@ -1,17 +1,15 @@
 <?php /** @var Array $data */ ?>
 
 
-
 <!--LOGIN IN-->
 
 <div class="container-fluid">
     <div class="row login ">
         <div class="col-md">
             <div class="leftside">
-
                 <?php if ($data['error'] != "") {?>
                     <div class="alert alert-danger alert-dismissible">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         <strong>Chyba!</strong> Nesprávne meno alebo heslo.
                     </div>
                 <?php } ?>

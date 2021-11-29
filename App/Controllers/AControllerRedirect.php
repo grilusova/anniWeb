@@ -9,11 +9,11 @@ abstract class AControllerRedirect extends \App\Core\AControllerBase
     protected function redirect($controller, $action = "", $params = [])
     {
         $location = "Location: ?c=$controller";
-        if($action != ""){
+        if ($action != "") {
             $location .= "&a=$action";
         }
-        foreach ($params as $name => $value){
-            $location .= "&$name" . urldecode($value);
+        foreach ($params as $name => $value) {
+            $location .= "&$name=" . urlencode($value);
         }
         header($location);
     }
