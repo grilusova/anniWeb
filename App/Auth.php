@@ -4,7 +4,7 @@ namespace App;
 
 class Auth
 {
-    const LOGIN = "nina@a.sk";
+    const LOGIN = "admin@a.sk";
     const PASSWORD = "123";
 
 

@@ -123,6 +123,48 @@ html,body{
     padding-bottom: 200px;
 
 }
+.error {
+    color: red;
+
+}
+
+#submit-info {
+    display: none;
+    color: red;
+}
+
+.bi-question-circle{
+    padding: 0;
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+
+
+
+}
+
+#otazka{
+    display: none;
+}
+
+#otazka2{
+    display: none;
+}
+
+#otazka3{
+    display: none;
+}
+
+#otazka4{
+    display: none;
+}
+
+#otazka5{
+    display: none;
+}
+
+
 
 .leftside{
     padding-top: 200px;

@@ -49,7 +49,11 @@ class HomeController extends AControllerRedirect
         if (!Auth::isLogged()){
             $this->redirect('home');
         }
-        return $this->html();
+        return $this->html(
+            [
+                'error' => $this->request()->getValue('error')
+            ]
+        );
     }
 
     public function update()
@@ -82,12 +86,14 @@ class HomeController extends AControllerRedirect
             $newAdd->setPriceWithoutVAT($this->request()->getValue('price_withoutVAT'));
             $newAdd->setAmount($this->request()->getValue('amount'));
             $newAdd->save();
+
             $_SESSION['message'] = "Record has been saved!";
             $_SESSION['msg_type'] = "success";
 
-            }
+        }
 
         $this->redirect('home', 'addProduct');
+
     }
 
 
@@ -125,6 +131,8 @@ class HomeController extends AControllerRedirect
             $add->setPriceWithoutVAT($this->request()->getValue('price_withoutVAT'));
             $add->setAmount($this->request()->getValue('amount'));
             $add->save();
+
+
 
             $_SESSION['message'] = "Record has been saved!";
             $_SESSION['msg_type'] = "success";

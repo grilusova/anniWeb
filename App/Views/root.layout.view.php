@@ -16,7 +16,11 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jwuery/1.12.4/jquery.min.js"></script>
 
+
     <link rel="stylesheet" href="public/css.css" type="text/css">
+
+    <script src="public/skript.js"></script>
+
 
 </head>
 <body>
@@ -25,7 +29,7 @@
 
 <nav class="navbar <?php if (!\App\Auth::isLogged()) { ?> navbar-expand-lg <?php }else{ ?> navbar-expand-xl  <?php } ?> navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><img class="logo" src="public/img/logo1.png" alt="logo"></a>
+        <a class="navbar-brand" href="?c=home"><img class="logo" src="public/img/logo1.png" alt="logo"></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
             <span class="navbar-toggler-icon"> </span>
@@ -35,7 +39,7 @@
             <ul class="navbar-nav m-auto my-2 my-lg-0">
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="?c=home"">Home</a>
+                    <a class="nav-link" href="?c=home">Home</a>
                 </li>
                 <?php if (!\App\Auth::isLogged()) { ?>
                 <li class="nav-item">
@@ -75,7 +79,7 @@
             <?php } ?>
 
 
-            <a class="icon" href="index.html"><i class="bi bi-bag"></i></a>
+            <a class="icon" href="?c=home"><i class="bi bi-bag"></i></a>
 
 
             <ul class="navbar-nav my-2 my-lg-0">
@@ -128,11 +132,11 @@
 
                 <p><a class="nav-link-bottom" href="?c=home&a=FAQ">FAQ</a></p>
 
-                <p><a class="nav-link-bottom" href="index.html">Payment method</a></p>
+                <p><a class="nav-link-bottom" href="?c=home">Payment method</a></p>
 
-                <p><a class="nav-link-bottom"  href="index.html">Transport and delivery</a></p>
+                <p><a class="nav-link-bottom"  href="?c=home">Transport and delivery</a></p>
 
-                <p><a class="nav-link-bottom"  href="index.html">How to return the goods?</a></p>
+                <p><a class="nav-link-bottom"  href="?c=home">How to return the goods?</a></p>
 
             </div>
 

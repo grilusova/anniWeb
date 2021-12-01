@@ -1,11 +1,16 @@
 <?php /** @var Array $data */ ?>
 
 
-
+<?php if ($data['error'] != "") {?>
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <?= $data['error'] ?>
+    </div>
+<?php } ?>
 
 <!--ADD PRODUCT-->
   <div class="container py-5">
-    <form method="post" action="?c=home&a=upload">
+    <form method="post" action="?c=home&a=upload" id="addForm">
 
         <?php if (isset($_SESSION['message'])): ?>
 
@@ -16,32 +21,69 @@
             </div>
         <?php endif ?>
 
-      <div class="mb-4">
-        <label>Názov produktu</label>
-        <input type="text" class="form-control" name="name">
-      </div>
+    <div class="row">
+        <div class="col-11 mb-4">
+            <label for="name">Názov produktu</label>
+            <input type="text" class="form-control" name="name" id="name">
+        </div>
+        <div class="col mb-4">
+            <i class="bi bi-question-circle" onmouseover="showHint()"></i>
+            <li id="otazka">Zadaj meno</li>
+        </div>
+    </div>
 
-      <div class="mb-4">
-        <label>Číslo produktu</label>
-        <input type="text" class="form-control" name="product_number">
-      </div>
+        <div class="row">
+            <div class="col-11 mb-4">
+                <label  for="product_number">Číslo produktu</label>
+                <input type="text" class="form-control" name="product_number" id="product_number" >
+            </div>
+            <div class="col mb-4">
+                <i class="bi bi-question-circle" onmouseover="showHint2()"></i>
+                <li id="otazka2">akceptuje len čísla</li>
+            </div>
+        </div>
 
-      <div class="mb-4">
-        <label>Cena</label>
-        <input type="text" class="form-control" name="price">
-      </div>
+        <div class="row">
+            <div class="col-11 mb-4">
+                <label for="price">Cena</label>
+                <input type="text" class="form-control" name="price" id="price">
+            </div>
+            <div class="col mb-4">
+                <i class="bi bi-question-circle" onmouseover="showHint3()"></i>
+                <li id="otazka3">Musí mať dve desatiné miesta, použite(,)</li>
+            </div>
+        </div>
 
-      <div class="mb-4">
-        <label>Cena bez DPH</label>
-        <input type="text" class="form-control" name="price_withoutVAT">
-      </div>
+        <div class="row">
+            <div class="col-11 mb-4">
+                <label for="price_withoutVAT">Cena bez DPH</label>
+                <input type="text" class="form-control" name="price_withoutVAT" id="price_withoutVAT">
+            </div>
+            <div class="col mb-4">
+                <i class="bi bi-question-circle" onmouseover="showHint4()"></i>
+                <li id="otazka4">Musí mať dve desatiné miesta, použite(,)</li>
+            </div>
+        </div>
 
-      <div class="mb-4">
-        <label>Počet kusov</label>
-        <input type="number" class="form-control" name="amount">
-      </div>
+        <div class="row">
+            <div class="col-11 mb-4">
+                <label for="amount">Počet kusov</label>
+                <input type="number" class="form-control" name="amount" id="amount">
+            </div>
+            <div class="col mb-4">
+                <i class="bi bi-question-circle" onmouseover="showHint5()"></i>
+                <li id="otazka5">Len celé čísla</li>
+            </div>
+        </div>
 
 
-      <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
+
+        <div id="submit-info">
+            Formulár obsahuje chyby a nie je možné ho odoslať.
+        </div>
+        <input type="submit" name="submit" value="Odoslať" id="submit" class="btn btn-primary">
+
+<!--      <button type="submit" name="submit" class="btn btn-primary">Submit</button>-->
     </form>
   </div>
