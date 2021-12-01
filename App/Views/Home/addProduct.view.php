@@ -28,7 +28,7 @@
         </div>
         <div class="col mb-4">
             <i class="bi bi-question-circle" onmouseover="showHint()"></i>
-            <li id="otazka">Zadaj meno</li>
+            <p id="otazka">Zadaj meno</p>
         </div>
     </div>
 
@@ -39,7 +39,7 @@
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint2()"></i>
-                <li id="otazka2">akceptuje len čísla</li>
+                <p id="otazka2">akceptuje len čísla</p>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint3()"></i>
-                <li id="otazka3">Musí mať dve desatiné miesta, použite(,)</li>
+                <p id="otazka3">Musí mať dve desatiné miesta, použite(,)</p>
             </div>
         </div>
 
@@ -61,7 +61,7 @@
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint4()"></i>
-                <li id="otazka4">Musí mať dve desatiné miesta, použite(,)</li>
+                <p id="otazka4">Musí mať dve desatiné miesta, použite(,)</p>
             </div>
         </div>
 
@@ -72,7 +72,7 @@
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint5()"></i>
-                <li id="otazka5">Len celé čísla</li>
+                <p id="otazka5">Len celé čísla</p>
             </div>
         </div>
 

@@ -1,5 +1,6 @@
 <?php /** @var Array $data */ ?>
 
+
 <!--Image slider-->
 
 <div id="carousel" class="carousel slide" data-ride="carousel">

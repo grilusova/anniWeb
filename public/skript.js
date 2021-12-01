@@ -40,7 +40,7 @@ window.onload = () => {
         }
         let re = new RegExp('^\\d*$');
         if (!re.test(value)) {
-            return "Zadané Číslo produktu platný formát."
+            return "Zadané Číslo produktu musí mať platný formát."
         }
 
     });
