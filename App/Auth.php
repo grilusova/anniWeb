@@ -2,25 +2,35 @@
 
 namespace App;
 
+use App\Models\Reg;
+
 class Auth
 {
-    const LOGIN = "admin@a.sk";
-    const PASSWORD = "123";
-
 
     public static function login($login, $password)
     {
-        if($login == self::LOGIN && $password == self::PASSWORD){
-            $_SESSION["name"] = $login;
-            return true;
-        }else{
-            return false;
+        $all = Reg::getAll();
+        foreach ($all as $a) {
+            if (($login == $a->getEmail()) && ($password == $a->getPassword())) {
+                $_SESSION["name"] = $login;
+                return true;
+            }
         }
+            return false;
     }
+
 
     public static function isLogged()
     {
         return isset($_SESSION['name']);
+    }
+
+    public static function isAdmin()
+    {
+
+        if (self::getName() == "admin@gmail.com") {
+            return true;
+        }
     }
 
     public static function getName()

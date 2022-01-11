@@ -18,7 +18,8 @@ class AuthController extends AControllerRedirect
 
     public function loginForm(){
 
-        return $this->html( [
+        return $this->html(
+            [
                 'error' => $this->request()->getValue('error')
             ]
         );
@@ -36,6 +37,7 @@ class AuthController extends AControllerRedirect
             $this->redirect('auth','loginForm', ['error' => 'Zlé meno alebo heslo!']);
         }
     }
+
 
     public function logout()
     {

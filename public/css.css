@@ -348,6 +348,15 @@ h1{
     margin-bottom: 40px;
 }
 
+/*-- registration --*/
+
+.re{
+    padding-top: 23px;
+}
+
+.vh-100{
+    background-color: #eee;
+}
 
 
 /*----Media Queries --*/

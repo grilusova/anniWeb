@@ -6,6 +6,7 @@ use App\Auth;
 use App\Config\Configuration;
 use App\Core\AControllerBase;
 use App\Models\Add;
+use App\Models\Reg;
 
 /**
  * Class HomeController
@@ -24,10 +25,63 @@ class HomeController extends AControllerRedirect
 
     public function FAQ()
     {
+        return $this->html();
+    }
+
+
+    public function registration()
+    {
         return $this->html(
-            []
+            [
+                'error' => $this->request()->getValue('error')
+            ]
         );
     }
+
+
+    public function register()
+    {
+        if (Auth::isLogged()){
+            $this->redirect('home');
+        }
+
+        if(isset($_POST['submit'])){
+
+            $email = $this->request()->getValue('email');
+            $registered = self::registered($email);
+
+            if($registered){
+                  $_SESSION['message'] = "Email already in use";
+                  $_SESSION['msg_type'] = "danger";
+                  $this->redirect('home','registration');
+            } else {
+                $newReg = new Reg();
+                $newReg->setEmail($this->request()->getValue('email'));
+                $newReg->setFirstName($this->request()->getValue('firstName'));
+                $newReg->setLastName($this->request()->getValue('lastName'));
+                $newReg->setPassword($this->request()->getValue('password'));
+                $newReg->save();
+
+                $_SESSION['message'] = "You can Log in now";
+                $_SESSION['msg_type'] = "success";
+
+                $this->redirect('auth','loginForm');
+            }
+        }
+
+    }
+
+    public static function registered($email)
+    {
+        $all = Reg::getAll();
+        foreach ($all as $a) {
+            if ($email == $a->getEmail()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public function display()
     {
@@ -92,7 +146,7 @@ class HomeController extends AControllerRedirect
 
         }
 
-        $this->redirect('home', 'addProduct');
+        $this->redirect('home', 'display');
 
     }
 

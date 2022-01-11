@@ -13,6 +13,14 @@
                         <strong>Chyba!</strong> Nesprávne meno alebo heslo.
                     </div>
                 <?php } ?>
+                <?php if (isset($_SESSION['message'])): ?>
+
+                    <div class="alert alert-<?=$_SESSION['msg_type']?>">
+                        <?php echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                        ?>
+                    </div>
+                <?php endif ?>
 
                 <p class="nadpis">Are you already registered?</p>
                 <form method="post" action="?c=auth&a=login">
@@ -36,7 +44,7 @@
             <div class="rightside">
 
                 <p class="nadpis">Is this your first time shopping?</p>
-                <button type="submit" class="btn1">Create Account</button>
+                <a href="?c=home&a=registration"><button type="submit" class="btn1">Create Account</button></a>
                 <h5>YOU CAN GET</h5>
                 <p><i class="bi bi-envelope-open"></i>10% discount on newsletter subscription</p>
                 <p><i class="bi bi-search"></i>A convenient way to track your order</p>

@@ -28,7 +28,7 @@
         </div>
         <div class="col mb-4">
             <i class="bi bi-question-circle" onmouseover="showHint()"></i>
-            <p id="otazka">Zadaj meno</p>
+            <p id="otazka">Zadaj názov</p>
         </div>
     </div>
 
@@ -84,6 +84,5 @@
         </div>
         <input type="submit" name="submit" value="Odoslať" id="submit" class="btn btn-primary">
 
-<!--      <button type="submit" name="submit" class="btn btn-primary">Submit</button>-->
     </form>
   </div>

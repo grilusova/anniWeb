@@ -27,7 +27,7 @@
 
 <!--Navigation-->
 
-<nav class="navbar <?php if (!\App\Auth::isLogged()) { ?> navbar-expand-lg <?php }else{ ?> navbar-expand-xl  <?php } ?> navbar-light bg-light sticky-top">
+<nav class="navbar <?php if (!\App\Auth::isAdmin()) { ?> navbar-expand-lg <?php }else{ ?> navbar-expand-xl  <?php } ?> navbar-light bg-light sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="?c=home"><img class="logo" src="public/img/logo1.png" alt="logo"></a>
 
@@ -41,7 +41,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="?c=home">Home</a>
                 </li>
-                <?php if (!\App\Auth::isLogged()) { ?>
+                <?php if (!\App\Auth::isAdmin()) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
@@ -55,7 +55,7 @@
                 </li>
                 <?php } ?>
 
-                <?php if (\App\Auth::isLogged()) { ?>
+                <?php if (\App\Auth::isAdmin()) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="?c=home&a=addProduct">Add Product</a>
                 </li>
@@ -74,7 +74,7 @@
 
 
 
-            <?php if (!\App\Auth::isLogged()) { ?>
+            <?php if ( !\App\Auth::isLogged()) { ?>
             <a class="icon" href="<?= \App\Config\Configuration::LOGIN_URL ?>"><i class="bi bi-person"></i></a>
             <?php } ?>
 
@@ -83,7 +83,7 @@
 
 
             <ul class="navbar-nav my-2 my-lg-0">
-            <?php if (\App\Auth::isLogged()) { ?>
+            <?php if (\App\Auth::isAdmin() || \App\Auth::isLogged()) { ?>
             <li class="nav-item">
                 <a class="nav-link" href="?c=auth&a=logout">Logout</a>
             </li>
