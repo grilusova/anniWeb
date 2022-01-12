@@ -74,8 +74,10 @@
 
 
 
-            <?php if ( !\App\Auth::isLogged()) { ?>
+            <?php if ( !\App\Auth::isAdmin()) { ?>
+                <?php if ( !\App\Auth::isLogged()) { ?>
             <a class="icon" href="<?= \App\Config\Configuration::LOGIN_URL ?>"><i class="bi bi-person"></i></a>
+                <?php } else {?>  <a class="icon" href="?c=auth&a=account""><i class="bi bi-person"></i></a> <?php } ?>
             <?php } ?>
 
 
