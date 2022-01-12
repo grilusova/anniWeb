@@ -41,11 +41,11 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="?c=home">Home</a>
                 </li>
-                <?php if (!\App\Auth::isAdmin()) { ?>
+
                 <li class="nav-item">
                     <a class="nav-link" href="?c=home&a=productPage">Products</a>
                 </li>
-
+                <?php if (!\App\Auth::isAdmin()) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Services</a>
                 </li>

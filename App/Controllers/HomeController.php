@@ -142,10 +142,10 @@ class HomeController extends AControllerRedirect
             $this->redirect('home');
         }
 
-        if(isset($_POST['submit'])) {
+        if(isset($_FILES['file'])) {
 
             if($_FILES["file"]["error"] == UPLOAD_ERR_OK){
-                $name = date('Y-m-d-H-i-s_').$_FILES['file']['name'];
+                $name = date('Y-m-d-H-i-s_') . $_FILES['file']['name'];
                 move_uploaded_file($_FILES['file']['tmp_name'], Configuration::UPLOAD_DIR . "$name");
 
                 $newAdd = new Add();

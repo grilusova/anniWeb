@@ -10,7 +10,8 @@
 
 <!--ADD PRODUCT-->
   <div class="container py-5">
-    <form method="post" action="?c=home&a=upload" id="addForm">
+      <form method="post" enctype="multipart/form-data" action="?c=home&a=upload" id="addForm">
+
 
         <?php if (isset($_SESSION['message'])): ?>
 

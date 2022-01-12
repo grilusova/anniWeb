@@ -7,8 +7,9 @@
             </div>
         </div>
 
-        <?php foreach ($data['adds'] as $add) { ?>
+
         <div class="row">
+            <?php foreach ($data['adds'] as $add) { ?>
             <div class="col-lg-3 text-center">
                 <div class="card">
                     <div CLASS="card-body">
@@ -18,8 +19,9 @@
                 <h6><?php echo $add->getName() ?></h6>
                 <p><?php echo $add->getPrice() ?></p>
             </div>
+            <?php } ?>
         </div>
-        <?php } ?>
+
 
 
     </div>
