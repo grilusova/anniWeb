@@ -28,6 +28,16 @@ class HomeController extends AControllerRedirect
         return $this->html();
     }
 
+    public function productPage()
+    {
+        $adds = Add::getAll();
+        return $this->html(
+            [
+                'adds' => $adds
+            ]
+        );
+    }
+
 
     public function registration()
     {
@@ -133,16 +143,24 @@ class HomeController extends AControllerRedirect
         }
 
         if(isset($_POST['submit'])) {
-            $newAdd = new Add();
-            $newAdd->setName($this->request()->getValue('name'));
-            $newAdd->setProductNumber($this->request()->getValue('product_number'));
-            $newAdd->setPrice($this->request()->getValue('price'));
-            $newAdd->setPriceWithoutVAT($this->request()->getValue('price_withoutVAT'));
-            $newAdd->setAmount($this->request()->getValue('amount'));
-            $newAdd->save();
 
-            $_SESSION['message'] = "Record has been saved!";
-            $_SESSION['msg_type'] = "success";
+            if($_FILES["file"]["error"] == UPLOAD_ERR_OK){
+                $name = date('Y-m-d-H-i-s_').$_FILES['file']['name'];
+                move_uploaded_file($_FILES['file']['tmp_name'], Configuration::UPLOAD_DIR . "$name");
+
+                $newAdd = new Add();
+                $newAdd->setName($this->request()->getValue('name'));
+                $newAdd->setProductNumber($this->request()->getValue('product_number'));
+                $newAdd->setPrice($this->request()->getValue('price'));
+                $newAdd->setPriceWithoutVAT($this->request()->getValue('price_withoutVAT'));
+                $newAdd->setAmount($this->request()->getValue('amount'));
+                $newAdd->setImage($name);
+                $newAdd->save();
+
+                $_SESSION['message'] = "Record has been saved!";
+                $_SESSION['msg_type'] = "success";
+
+            }
 
         }
 
@@ -153,6 +171,7 @@ class HomeController extends AControllerRedirect
 
     public function delete()
     {
+
 
         if(!Auth::isLogged()){
             $this->redirect('home');

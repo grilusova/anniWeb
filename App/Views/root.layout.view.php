@@ -43,7 +43,7 @@
                 </li>
                 <?php if (!\App\Auth::isAdmin()) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="?c=home&a=productPage">Products</a>
                 </li>
 
                 <li class="nav-item">

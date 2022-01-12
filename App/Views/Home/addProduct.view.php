@@ -76,6 +76,13 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-11 mb-4">
+                <label for="formFile" class="Form-label">Image</label>
+                <input type="file" class="form-control" name="file" id="formFile">
+            </div>
+        </div>
+
 
 
 
