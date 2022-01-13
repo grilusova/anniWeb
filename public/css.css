@@ -500,6 +500,22 @@ td.riadok{
 }
 
 
+
+
+
+/*-- add pictures --*/
+
+.addPicture{
+    min-height: 65vh;
+}
+
+.pictureFrom{
+    padding-top: 150px;
+}
+
+
+
+
 /*----Media Queries --*/
 @media (max-width: 2560px) {
     .social a{

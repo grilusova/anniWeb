@@ -40,6 +40,7 @@
             <td>
                 <a href="?c=home&a=update&productid=<?= $add->getId() ?>" class="btn btn-primary">Update</a>
                 <a href="?c=home&a=delete&productid=<?= $add->getId() ?>" class="btn btn-danger">Delete</a>
+                <a href="?c=home&a=addPictures&productid=<?= $add->getId() ?>" class="btn btn-secondary">Add pictures</a>
 
             </td>
         </tr>

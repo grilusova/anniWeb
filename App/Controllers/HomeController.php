@@ -8,6 +8,7 @@ use App\Core\AControllerBase;
 use App\Models\Add;
 use App\Models\Comment;
 use App\Models\Reg;
+use App\Models\Pictures;
 
 /**
  * Class HomeController
@@ -253,5 +254,44 @@ class HomeController extends AControllerRedirect
             $this->redirect('home', 'productPage');
         }
 
+    }
+
+
+    public function addPictures()
+    {
+        $adds = Add::getAll();
+        $pics = Pictures::getAll();
+        $_SESSION['id'] = $this->request()->getValue('productid');
+
+        return $this->html(
+            [
+                'adds' => $adds
+            ]
+        );
+    }
+
+    public function uploadPictures()
+    {
+        if (isset($_FILES['image'])) {
+
+            $filenames = array_filter($_FILES['image']['name']);
+
+            if(!empty($filenames)){
+                foreach ($_FILES['image']['name'] as $key=>$val){
+                    if ($_FILES["image"]["error"][$key] == UPLOAD_ERR_OK) {
+                        $name = date('Y-m-d-H-i-s_') . $_FILES['image']['name'][$key];
+                        move_uploaded_file($_FILES['image']['tmp_name'][$key], Configuration::UPLOAD_DIR . "$name");
+                        $newupload = new Pictures();
+                        $newupload->setProductId($this->request()->getValue('id'));
+                        $newupload->setImage($name);
+                        $newupload->save();
+                    }
+                }
+                $_SESSION['message'] = "Record has been saved!";
+                $_SESSION['msg_type'] = "success";
+            }
+        }
+
+        $this->redirect('home', 'display');
     }
 }
