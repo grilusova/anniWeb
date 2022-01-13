@@ -6,6 +6,7 @@ use App\Auth;
 use App\Config\Configuration;
 use App\Core\AControllerBase;
 use App\Models\Add;
+use App\Models\Comment;
 use App\Models\Reg;
 
 /**
@@ -51,19 +52,19 @@ class HomeController extends AControllerRedirect
 
     public function register()
     {
-        if (Auth::isLogged()){
+        if (Auth::isLogged()) {
             $this->redirect('home');
         }
 
-        if(isset($_POST['submit'])){
+        if (isset($_POST['submit'])) {
 
             $email = $this->request()->getValue('email');
             $registered = self::registered($email);
 
-            if($registered){
-                  $_SESSION['message'] = "Email already in use";
-                  $_SESSION['msg_type'] = "danger";
-                  $this->redirect('home','registration');
+            if ($registered) {
+                $_SESSION['message'] = "Email already in use";
+                $_SESSION['msg_type'] = "danger";
+                $this->redirect('home', 'registration');
             } else {
                 $newReg = new Reg();
                 $newReg->setEmail($this->request()->getValue('email'));
@@ -75,7 +76,7 @@ class HomeController extends AControllerRedirect
                 $_SESSION['message'] = "You can Log in now";
                 $_SESSION['msg_type'] = "success";
 
-                $this->redirect('auth','loginForm');
+                $this->redirect('auth', 'loginForm');
             }
         }
 
@@ -97,7 +98,7 @@ class HomeController extends AControllerRedirect
     {
         $adds = Add::getAll();
 
-        if (!Auth::isLogged()){
+        if (!Auth::isLogged()) {
             $this->redirect('home');
         }
 
@@ -110,7 +111,7 @@ class HomeController extends AControllerRedirect
 
     public function addProduct()
     {
-        if (!Auth::isLogged()){
+        if (!Auth::isLogged()) {
             $this->redirect('home');
         }
         return $this->html(
@@ -125,7 +126,7 @@ class HomeController extends AControllerRedirect
         $adds = Add::getAll();
         $_SESSION['id'] = $this->request()->getValue('productid');
 
-        if (!Auth::isLogged()){
+        if (!Auth::isLogged()) {
             $this->redirect('home');
         }
         return $this->html(
@@ -138,13 +139,13 @@ class HomeController extends AControllerRedirect
 
     public function upload()
     {
-        if(!Auth::isLogged()){
+        if (!Auth::isLogged()) {
             $this->redirect('home');
         }
 
-        if(isset($_FILES['file'])) {
+        if (isset($_FILES['file'])) {
 
-            if($_FILES["file"]["error"] == UPLOAD_ERR_OK){
+            if ($_FILES["file"]["error"] == UPLOAD_ERR_OK) {
                 $name = date('Y-m-d-H-i-s_') . $_FILES['file']['name'];
                 move_uploaded_file($_FILES['file']['tmp_name'], Configuration::UPLOAD_DIR . "$name");
 
@@ -173,11 +174,11 @@ class HomeController extends AControllerRedirect
     {
 
 
-        if(!Auth::isLogged()){
+        if (!Auth::isLogged()) {
             $this->redirect('home');
         }
         $productId = $this->request()->getValue('productid');
-        if($productId > 0){
+        if ($productId > 0) {
             $add = Add::getOne($productId);
             $add->delete();
             $_SESSION['message'] = "Record has been deleted!";
@@ -191,12 +192,12 @@ class HomeController extends AControllerRedirect
 
     public function updateProduct()
     {
-        if(!Auth::isLogged()){
+        if (!Auth::isLogged()) {
             $this->redirect('home');
         }
 
         $productId = $this->request()->getValue('productid');
-        if($productId > 0){
+        if ($productId > 0) {
             $add = Add::getOne($productId);
             $add->setName($this->request()->getValue('name'));
             $add->setProductNumber($this->request()->getValue('product_number'));
@@ -206,10 +207,8 @@ class HomeController extends AControllerRedirect
             $add->save();
 
 
-
             $_SESSION['message'] = "Record has been saved!";
             $_SESSION['msg_type'] = "success";
-
 
 
         }
@@ -217,4 +216,42 @@ class HomeController extends AControllerRedirect
         $this->redirect('home', 'display');
     }
 
+
+    public function singleProduct()
+    {
+        $adds = Add::getAll();
+        $comm = Comment::getAll();
+        $_SESSION['id'] = $this->request()->getValue('productid');
+
+        if (!Auth::isLogged()) {
+            $this->redirect('home');
+        }
+        return $this->html(
+            [
+                'adds' => $adds,
+                'comm' => $comm
+
+            ]
+        );
+    }
+
+
+    public function addReview()
+    {
+
+        if (isset($_POST['comment'])) {
+            $newComm = new Comment();
+            $newComm->setProductId($this->request()->getValue('id'));
+            $id = $this->request()->getValue('id');
+            $newComm->setText($this->request()->getValue('text'));
+            $newComm->save();
+
+            $_SESSION['message'] = "You can Log in now";
+            $_SESSION['msg_type'] = "success";
+
+
+            $this->redirect('home', 'productPage');
+        }
+
+    }
 }

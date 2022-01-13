@@ -21,7 +21,7 @@ class Comment extends Model
 
     static public function setTableName()
     {
-        return "comments";
+        return "comment";
     }
 
 

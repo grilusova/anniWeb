@@ -13,11 +13,13 @@
             <div class="col-lg-3 text-center">
                 <div class="card">
                     <div CLASS="card-body">
-                        <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>" class="w-100" alt="...">
+                        <a href="?c=home&a=singleProduct&productid=<?= $add->getId() ?>">
+                        <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>"  class="w-100" alt="...">
+                        </a>
                     </div>
                 </div>
                 <h6><?php echo $add->getName() ?></h6>
-                <p><?php echo $add->getPrice() ?></p>
+                <p><?php echo $add->getPrice() ?> €</p>
             </div>
             <?php } ?>
         </div>

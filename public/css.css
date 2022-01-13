@@ -369,9 +369,6 @@ h1{
 }
 
 
-
-
-
 button:hover {
     opacity:1;
 }
@@ -460,12 +457,47 @@ hr {
 
 
 
+/*-- single product page --*/
 
+.sproduct .mnozstvo{
+    width: 50px;
+    height: 45px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
 
+.description{
+    padding-left: 70px;
+    padding-bottom: 60px;
+}
 
+.picture{
+    padding-bottom: 60px;
+}
 
+.sproduct .p{
+    margin-bottom: 40px;
+}
 
+.reviews{
+    font-size: 35px;
+    font-weight: bolder;
+    padding: unset;
+}
 
+.nazov{
+    font-weight: bolder;
+}
+
+td.riadok{
+    padding: 1.5rem 0.5rem;
+}
+
+.pole{
+    height: 39px;
+
+}
 
 
 /*----Media Queries --*/
