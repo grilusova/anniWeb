@@ -7,9 +7,48 @@
 
 <section class="container sproduct my-5 pt-5">
     <div class="row mt-5">
+
         <div class="picture col-lg-5 col-md-12 col-12">
-            <img class="img-fluid w-100" src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>" alt="...">
+            <div class="row">
+            <img class="img-fluid w-100 pb-1" src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>" alt="...">
+
+            <div class="small-img-group">
+                <div class="small-image-col">
+                    <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>"  width="100%" class="small-img"  alt="...">
+                </div>
+
+                <?php foreach ($data['pics'] as $pic) { ?>
+                <?php if(($pic->getProductId() == $add->getId()) && ($pic->getNumber() == 1 )) { ?>
+                <div class="small-image-col">
+                    <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $pic->getImage() ?>"  width="100%" class="small-img"  alt="...">
+                </div>
+                    <?php } ?>
+                <?php } ?>
+
+                <?php foreach ($data['pics'] as $pic) { ?>
+                <?php if(($pic->getProductId() == $add->getId()) && ($pic->getNumber() == 2 )) { ?>
+                <div class="small-image-col">
+                    <img width="100%" class="small-img" src="<?= \APP\Config\Configuration::UPLOAD_DIR . $pic->getImage() ?>" alt="...">
+                </div>
+                    <?php } ?>
+                <?php } ?>
+
+
+                <?php foreach ($data['pics'] as $pic) { ?>
+                    <?php if(($pic->getProductId() == $add->getId()) && ($pic->getNumber() == 3 )) { ?>
+                        <div class="small-image-col">
+                            <img width="100%" class="small-img" src="<?= \APP\Config\Configuration::UPLOAD_DIR . $pic->getImage() ?>" alt="...">
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+
+            </div>
+
+
+            </div>
         </div>
+
+
 
         <div class="description col-lg-6 col-md-12 col-12 ">
             <h3 class="nazov py-2"><?= $add->getName()?></h3>

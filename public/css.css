@@ -358,6 +358,8 @@ h1{
     background-color: #eee;
 }
 
+
+
 /*-- account --*/
 
 .center{
@@ -468,8 +470,9 @@ hr {
 }
 
 .description{
-    padding-left: 70px;
+    padding-left: 80px;
     padding-bottom: 60px;
+    padding-top: 60px;
 }
 
 .picture{
@@ -478,6 +481,7 @@ hr {
 
 .sproduct .p{
     margin-bottom: 40px;
+
 }
 
 .reviews{
@@ -499,7 +503,17 @@ td.riadok{
 
 }
 
+.small-img-group{
+    display: flex;
 
+}
+
+.small-image-col{
+    padding-right: 6px;
+    padding-left: 6px;
+    flex-basis: 27%;
+    cursor: pointer;
+}
 
 
 

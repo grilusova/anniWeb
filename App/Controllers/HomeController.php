@@ -222,6 +222,7 @@ class HomeController extends AControllerRedirect
     {
         $adds = Add::getAll();
         $comm = Comment::getAll();
+        $pics = Pictures::getAll();
         $_SESSION['id'] = $this->request()->getValue('productid');
 
         if (!Auth::isLogged()) {
@@ -230,7 +231,8 @@ class HomeController extends AControllerRedirect
         return $this->html(
             [
                 'adds' => $adds,
-                'comm' => $comm
+                'comm' => $comm,
+                'pics' => $pics
 
             ]
         );
@@ -275,7 +277,7 @@ class HomeController extends AControllerRedirect
         if (isset($_FILES['image'])) {
 
             $filenames = array_filter($_FILES['image']['name']);
-
+            $number = 1;
             if(!empty($filenames)){
                 foreach ($_FILES['image']['name'] as $key=>$val){
                     if ($_FILES["image"]["error"][$key] == UPLOAD_ERR_OK) {
@@ -284,7 +286,9 @@ class HomeController extends AControllerRedirect
                         $newupload = new Pictures();
                         $newupload->setProductId($this->request()->getValue('id'));
                         $newupload->setImage($name);
+                        $newupload->setNumber($number);
                         $newupload->save();
+                        $number++;
                     }
                 }
                 $_SESSION['message'] = "Record has been saved!";

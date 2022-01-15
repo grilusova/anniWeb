@@ -33,7 +33,7 @@
                         <label for="exampleForControlInput2" class="form-lable">Heslo</label>
                         <input type="password" class="form-control" name="password" id="exampleForControlInput2" required>
                     </div>
-                    <button type="submit" class="btn1">Log In</button>
+                    <button type="submit" id="loginSubmit" class="btn1">Log In</button>
                 </form>
 
 
