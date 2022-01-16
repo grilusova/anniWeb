@@ -19,6 +19,10 @@ class AuthController extends AControllerRedirect
 
     public function loginForm(){
 
+        if (Auth::isLogged()) {
+            $this->redirect('home');
+        }
+
         return $this->html(
             [
                 'error' => $this->request()->getValue('error')
@@ -27,15 +31,26 @@ class AuthController extends AControllerRedirect
     }
 
     public function login(){
-        $login = $this->request()->getValue('login');
+        $login = $this->request()->getValue('email');
         $password = $this->request()->getValue('password');
 
-        $logged = Auth::login($login,$password);
+        if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$login)) {
+            $_SESSION['message'] = "You Entered An Invalid Email Format";
+            $_SESSION['msg_type'] = "danger";
+            $this->redirect('auth','loginForm');
+            return;
+        }
 
-        if($logged) {
-            $this->redirect('home');
-        } else {
-            $this->redirect('auth','loginForm', ['error' => 'Zlé meno alebo heslo!']);
+        if(empty($login) || empty($password)){
+            $this->redirect('auth','loginForm', ['error' => 'Login and Password mandatory']);
+        }else{
+            $logged = Auth::login($login,$password);
+
+            if($logged) {
+                $this->redirect('home');
+            } else {
+                $this->redirect('auth','loginForm', ['error' => 'Wrong username or password!']);
+            }
         }
     }
 

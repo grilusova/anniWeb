@@ -25,61 +25,6 @@ function validateInput(element, validationFunction) {
 
 
 
-window.onload = () => {
-    validateInput(document.getElementById("name"), function (value = null) {
-        if (value == null || value.length == 0) {
-            return "Názov produktu musí byť zadaný";
-        }
-    });
-
-
-
-    validateInput(document.getElementById("product_number"), function (value = null) {
-        if (value == null || value.length == 0) {
-            return "Číslo produktu musí byť zadané";
-        }
-        let re = new RegExp('^\\d*$');
-        if (!re.test(value)) {
-            return "Zadané Číslo produktu musí mať platný formát."
-        }
-
-    });
-
-
-    validateInput(document.getElementById("price"), function (value = null) {
-        if (value == null || value.length == 0) {
-            return "Cena musí byť zadaná";
-        }
-        let re = new RegExp('^[0-9]+[,]+[0-9]{2}$');
-        if (!re.test(value)) {
-            return "Zadaná Cena nemá platný formát."
-        }
-    });
-
-
-    validateInput(document.getElementById("price_withoutVAT"), function (value = null) {
-        if (value == null || value.length == 0) {
-            return "Cena bez DPH musí byť zadaná";
-        }
-        let re = new RegExp('^[0-9]+[,]+[0-9]{2}$');
-        if (!re.test(value)) {
-            return "Zadaná Cena bez DPH nemá platný formát."
-        }
-    });
-
-
-    validateInput(document.getElementById("amount"), function (value = null) {
-        if (value == null || value.length == 0) {
-            return "Počet kusov musí byť zadaný";
-        }
-        let re = new RegExp('^[0-9]+$');
-        if (!re.test(value)) {
-            return "Zadaný Počet kusov nemá platný formát."
-        }
-    });
-
-}
-
 function checkFormState() {
     if (document.querySelectorAll(".error").length == 0) {
         document.getElementById("submit").disabled = false;
@@ -136,6 +81,11 @@ function showHint5(){
     }
 }
 
+
+function clickme(smallimg){
+    var fullimg = document.getElementById('MainImg');
+    fullimg.src = smallimg.src;
+}
 
 
 

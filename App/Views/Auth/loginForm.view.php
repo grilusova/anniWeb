@@ -10,9 +10,10 @@
                 <?php if ($data['error'] != "") {?>
                     <div class="alert alert-danger alert-dismissible">
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        <strong>Chyba!</strong> Nesprávne meno alebo heslo.
+                       <?php echo $data['error'] ?>
                     </div>
                 <?php } ?>
+
                 <?php if (isset($_SESSION['message'])): ?>
 
                     <div class="alert alert-<?=$_SESSION['msg_type']?>">
@@ -26,12 +27,12 @@
                 <form method="post" action="?c=auth&a=login">
                     <div class="mb-3">
                         <label for="exampleForControlInput1" class="form-lable">Email</label>
-                        <input type="email" class="form-control" name="login" id="exampleForControlInput1" required>
+                        <input type="email" id="email" name="email" class="form-control" required/>
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleForControlInput2" class="form-lable">Heslo</label>
-                        <input type="password" class="form-control" name="password" id="exampleForControlInput2" required>
+                        <input type="password" class="form-control" name="password" id="password" required>
                     </div>
                     <button type="submit" id="loginSubmit" class="btn1">Log In</button>
                 </form>

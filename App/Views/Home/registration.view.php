@@ -25,7 +25,7 @@
                                         <i class="re bi-envelope-open fa-lg me-3"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <label for="email">Your Email</label>
-                                            <input type="email" id="email" name="email" class="form-control" />
+                                            <input type="email" id="email" name="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
                                         </div>
                                     </div>
 
@@ -33,11 +33,11 @@
                                         <i class="re bi-person-circle fa-lg me-3"></i>
                                         <div class="form-outline flex-fill mb-0 me-2">
                                             <label for="firstName">Your First Name</label>
-                                            <input type="text" id="firstName" name="firstName" class="form-control" />
+                                            <input type="text" id="firstName" name="firstName" class="form-control" required/>
                                         </div>
                                         <div class="form-outline flex-fill mb-0">
                                             <label for="lastName">Your Last Name</label>
-                                            <input type="text" id="lastName" name="lastName" class="form-control" />
+                                            <input type="text" id="lastName" name="lastName" class="form-control" required/>
                                         </div>
                                     </div>
 
@@ -46,7 +46,7 @@
                                         <i class="re bi-lock fa-lg me-3"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <label for="password">Your Password</label>
-                                            <input type="password" id="password" name="password" class="form-control" />
+                                            <input type="password" id="password" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
                                         </div>
                                     </div>
 

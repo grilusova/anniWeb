@@ -39,7 +39,7 @@
             <td><?php echo $add->getAmount() ?></td>
             <td>
                 <a href="?c=home&a=update&productid=<?= $add->getId() ?>" class="btn btn-primary">Update</a>
-                <a href="?c=home&a=delete&productid=<?= $add->getId() ?>" class="btn btn-danger">Delete</a>
+                <a onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger">Delete</a>
                 <a href="?c=home&a=addPictures&productid=<?= $add->getId() ?>" class="btn btn-secondary">Add pictures</a>
 
             </td>
@@ -49,7 +49,21 @@
         </tbody>
     </table>
 
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content" action="/action_page.php">
+            <div class="containeraccount">
+                <h1>Delete Account</h1>
+                <p>Are you sure you want to delete your account?</p>
 
+                <div class="clearfix">
+                    <a href="?c=home&a=display" class="btn btn-primary">Cancel</a>
+                    <a href="?c=home&a=delete&productid=<?= $add->getId() ?>" class="btn btn-danger">Delete</a>
+
+                </div>
+            </div>
+        </form>
+    </div>
 
 </div>
 </div>

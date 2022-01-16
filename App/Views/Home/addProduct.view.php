@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-11 mb-4">
             <label for="name">Názov produktu</label>
-            <input type="text" class="form-control" name="name" id="name">
+            <input type="text" class="form-control" name="name" id="name" required>
         </div>
         <div class="col mb-4">
             <i class="bi bi-question-circle" onmouseover="showHint()"></i>
@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col-11 mb-4">
                 <label  for="product_number">Číslo produktu</label>
-                <input type="text" class="form-control" name="product_number" id="product_number" >
+                <input type="text" class="form-control" pattern="[0-9]+" name="product_number" id="product_number" required>
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint2()"></i>
@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-11 mb-4">
                 <label for="price">Cena</label>
-                <input type="text" class="form-control" name="price" id="price">
+                <input type="text" class="form-control" pattern="^[0-9]+[,]+[0-9]{2}$" name="price" id="price" required>
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint3()"></i>
@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-11 mb-4">
                 <label for="price_withoutVAT">Cena bez DPH</label>
-                <input type="text" class="form-control" name="price_withoutVAT" id="price_withoutVAT">
+                <input type="text" class="form-control" pattern="^[0-9]+[,]+[0-9]{2}$" name="price_withoutVAT" id="price_withoutVAT" required>
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint4()"></i>
@@ -69,7 +69,7 @@
         <div class="row">
             <div class="col-11 mb-4">
                 <label for="amount">Počet kusov</label>
-                <input type="number" class="form-control" name="amount" id="amount">
+                <input type="number" class="form-control" pattern="^[0-9]+$" name="amount" id="amount" required>
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint5()"></i>
@@ -80,7 +80,7 @@
         <div class="row">
             <div class="col-11 mb-4">
                 <label for="formFile" class="Form-label">Image</label>
-                <input type="file" class="form-control" name="file" id="formFile">
+                <input type="file" multiple accept="*.jpg, *.jpeg, *.png" class="form-control" name="file" id="file" required>
             </div>
         </div>
 

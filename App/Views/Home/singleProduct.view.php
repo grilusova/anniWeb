@@ -10,17 +10,17 @@
 
         <div class="picture col-lg-5 col-md-12 col-12">
             <div class="row">
-            <img class="img-fluid w-100 pb-1" src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>" alt="...">
+            <img class="img-fluid w-100 pb-1" src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>" alt="..." id="MainImg" onclick="clickme(this)">
 
             <div class="small-img-group">
                 <div class="small-image-col">
-                    <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>"  width="100%" class="small-img"  alt="...">
+                    <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>"  width="100%" class="smallimg"  alt="..." onclick="clickme(this)">
                 </div>
 
                 <?php foreach ($data['pics'] as $pic) { ?>
                 <?php if(($pic->getProductId() == $add->getId()) && ($pic->getNumber() == 1 )) { ?>
                 <div class="small-image-col">
-                    <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $pic->getImage() ?>"  width="100%" class="small-img"  alt="...">
+                    <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $pic->getImage() ?>"  width="100%" class="smallimg"  alt="..." onclick="clickme(this)">
                 </div>
                     <?php } ?>
                 <?php } ?>
@@ -28,7 +28,7 @@
                 <?php foreach ($data['pics'] as $pic) { ?>
                 <?php if(($pic->getProductId() == $add->getId()) && ($pic->getNumber() == 2 )) { ?>
                 <div class="small-image-col">
-                    <img width="100%" class="small-img" src="<?= \APP\Config\Configuration::UPLOAD_DIR . $pic->getImage() ?>" alt="...">
+                    <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $pic->getImage() ?>" width="100%" class="smallimg"  alt="..." onclick="clickme(this)">
                 </div>
                     <?php } ?>
                 <?php } ?>
@@ -37,7 +37,7 @@
                 <?php foreach ($data['pics'] as $pic) { ?>
                     <?php if(($pic->getProductId() == $add->getId()) && ($pic->getNumber() == 3 )) { ?>
                         <div class="small-image-col">
-                            <img width="100%" class="small-img" src="<?= \APP\Config\Configuration::UPLOAD_DIR . $pic->getImage() ?>" alt="...">
+                            <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $pic->getImage() ?>" width="100%" class="smallimg"  alt="..." onclick="clickme(this)">
                         </div>
                     <?php } ?>
                 <?php } ?>
@@ -90,12 +90,12 @@
             </tbody>
         </table>
 
-
+        <?php if ( \App\Auth::isLogged()) { ?>
         <form method="post" action="?c=home&a=addReview">
             <input type="hidden" name="id" value="<?= $add->getId() ?>">
-            <input type="text" name="text" id="text" size="85" class="pole" placeholder="Write your review...">
+            <input type="text" name="text" id="text" size="85" class="pole" placeholder="Write your review..."  required>
             <input type="submit" name="comment" value="Send" class="btn3">
         </form>
-
+        <?php } ?>
     </div>
 </section>
