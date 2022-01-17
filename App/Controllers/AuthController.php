@@ -79,7 +79,8 @@ class AuthController extends AControllerRedirect
             $this->redirect('home');
         }
 
-        $personId = $this->request()->getValue('personid');
+        Auth::setId1();
+        $personId = $_SESSION['id'];
         if($personId > 0){
             $account = Reg::getOne($personId);
             $account->delete();
@@ -88,7 +89,7 @@ class AuthController extends AControllerRedirect
 
         }
         self::logout();
-        $this->redirect('home', 'display');
+        $this->redirect('product', 'display');
     }
 
 }

@@ -83,7 +83,7 @@
 
         <?php if ( \App\Auth::isLogged()) { ?>
             <input type="hidden" id="id" name="id" value="<?= $add->getId() ?>">
-            <input type="text" onfocusout="Write your review..." name="text" id="text" class="pole" placeholder="Write your review..."  required>
+            <input type="text" name="text" id="text" class="pole" placeholder="Write your review..."  required>
            <div class="reviewRow row">
             <button id="reviewOdoslat" class="btn3">Send</button>
             <input type="button" onclick="myFunction()" value="Reset field" class="btn3">

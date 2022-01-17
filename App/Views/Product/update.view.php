@@ -9,7 +9,7 @@
 
 <!--ADD PRODUCT-->
 <div class="container py-5">
-    <form method="post" action="?c=home&a=updateProduct&productid=<?= $add->getId() ?>" >
+    <form method="post" action="?c=product&a=updateProduct&productid=<?= $add->getId() ?>" >
 
 
 

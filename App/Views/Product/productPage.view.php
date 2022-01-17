@@ -21,7 +21,7 @@
             <div class="col-lg-3 text-center">
                 <div class="card">
                     <div CLASS="card-body">
-                        <a href="?c=home&a=singleProduct&productid=<?= $add->getId() ?>">
+                        <a href="?c=product&a=singleProduct&productid=<?= $add->getId() ?>">
                         <img src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>"  class="w-100" alt="...">
                         </a>
                     </div>

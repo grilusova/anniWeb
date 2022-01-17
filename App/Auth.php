@@ -38,6 +38,19 @@ class Auth
         }
     }
 
+    public static function setId1()
+    {
+        $all = Reg::getAll();
+        $login = $_SESSION['name'];
+        foreach ($all as $a) {
+            if (($login == $a->getEmail())) {
+                $_SESSION["id"] = $a->getId();
+                return;
+            }
+        }
+    }
+
+
     public static function getName()
     {
         return (Auth::isLogged() ? $_SESSION['name'] : "");
@@ -61,6 +74,9 @@ class Auth
     public static function logout()
     {
         unset($_SESSION['name']);
+        unset($_SESSION['id']);
+        unset($_SESSION['firstname']);
+        unset($_SESSION['lastname']);
         session_destroy();
     }
 

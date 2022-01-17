@@ -88,7 +88,7 @@ class Comment{
             return;
         }
 
-        fetch("?c=home&a=addReview", {
+        fetch("?c=product&a=addReview", {
             method: 'POST',
             headers: {
                  'Content-Type': 'application/x-www-form-urlencoded',
@@ -100,7 +100,7 @@ class Comment{
     }
 
     getAllComments(){
-        fetch('?a=getAllComments')
+        fetch('?c=product&a=getAllComments')
             .then(response => response.json())
             .then(data => {
                 let html = "";

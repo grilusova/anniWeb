@@ -40,7 +40,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="?c=home&a=productPage">Products</a>
+                    <a class="nav-link" href="?c=product&a=productPage">Products</a>
                 </li>
                 <?php if (!\App\Auth::isAdmin()) { ?>
                 <li class="nav-item">
@@ -54,11 +54,11 @@
 
                 <?php if (\App\Auth::isAdmin()) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="?c=home&a=addProduct">Add Product</a>
+                    <a class="nav-link" href="?c=product&a=addProduct">Add Product</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="?c=home&a=display">Product List</a>
+                    <a class="nav-link" href="?c=product&a=display">Product List</a>
                 </li>
                 <?php } ?>
             </ul>

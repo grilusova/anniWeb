@@ -12,7 +12,7 @@
     </div>
     <?php endif ?>
 
-    <form method="post" action="?c=home&a=addProduct">
+    <form method="post" action="?c=product&a=addProduct">
     <button type="submit" class="btn4 btn-primary my-5">Add Product</button>
     </form>
 
@@ -37,9 +37,9 @@
             <td><?php echo $add->getPriceWithoutVAT() ?></td>
             <td><?php echo $add->getAmount() ?></td>
             <td>
-                <a href="?c=home&a=update&productid=<?= $add->getId() ?>" class="btn btn-primary">Update</a>
+                <a href="?c=product&a=update&productid=<?= $add->getId() ?>" class="btn btn-primary">Update</a>
                 <a onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger">Delete</a>
-                <a href="?c=home&a=addPictures&productid=<?= $add->getId() ?>" class="btn btn-secondary">Add pictures</a>
+                <a href="?c=product&a=addPictures&productid=<?= $add->getId() ?>" class="btn btn-secondary">Add pictures</a>
 
             </td>
         </tr>
@@ -56,8 +56,8 @@
                 <p>Are you sure you want to delete your account?</p>
 
                 <div class="clearfix">
-                    <a href="?c=home&a=display" class="btn btn-primary">Cancel</a>
-                    <a href="?c=home&a=delete&productid=<?= $add->getId() ?>" class="btn btn-danger">Delete</a>
+                    <a href="?c=product&a=display" class="btn btn-primary">Cancel</a>
+                    <a href="?c=product&a=delete&productid=<?= $add->getId() ?>" class="btn btn-danger">Delete</a>
 
                 </div>
             </div>

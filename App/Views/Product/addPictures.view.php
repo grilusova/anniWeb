@@ -16,7 +16,7 @@
         </div>
     <?php endif ?>
 
-    <form class="pictureFrom" method="post" enctype="multipart/form-data" action="?c=home&a=uploadPictures">
+    <form class="pictureFrom" method="post" enctype="multipart/form-data" action="?c=product&a=uploadPictures">
 
 
         <input type="hidden" id="id" name="id" value="<?= $add->getId() ?>">
