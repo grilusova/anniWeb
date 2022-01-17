@@ -24,7 +24,7 @@
 
     <div class="row">
         <div class="col-11 mb-4">
-            <label for="name">Názov produktu</label>
+            <label for="name">Product Name</label>
             <input type="text" class="form-control" name="name" id="name" required>
         </div>
         <div class="col mb-4">
@@ -35,7 +35,7 @@
 
         <div class="row">
             <div class="col-11 mb-4">
-                <label  for="product_number">Číslo produktu</label>
+                <label  for="product_number">Product Number</label>
                 <input type="text" class="form-control" pattern="[0-9]+" name="product_number" id="product_number" required>
             </div>
             <div class="col mb-4">
@@ -46,7 +46,7 @@
 
         <div class="row">
             <div class="col-11 mb-4">
-                <label for="price">Cena</label>
+                <label for="price">Price</label>
                 <input type="text" class="form-control" pattern="^[0-9]+[,]+[0-9]{2}$" name="price" id="price" required>
             </div>
             <div class="col mb-4">
@@ -55,20 +55,10 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-11 mb-4">
-                <label for="price_withoutVAT">Cena bez DPH</label>
-                <input type="text" class="form-control" pattern="^[0-9]+[,]+[0-9]{2}$" name="price_withoutVAT" id="price_withoutVAT" required>
-            </div>
-            <div class="col mb-4">
-                <i class="bi bi-question-circle" onmouseover="showHint4()"></i>
-                <p id="otazka4">Musí mať dve desatiné miesta, použite(,)</p>
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-11 mb-4">
-                <label for="amount">Počet kusov</label>
+                <label for="amount">Amount</label>
                 <input type="number" class="form-control" pattern="^[0-9]+$" name="amount" id="amount" required>
             </div>
             <div class="col mb-4">
@@ -80,7 +70,7 @@
         <div class="row">
             <div class="col-11 mb-4">
                 <label for="formFile" class="Form-label">Image</label>
-                <input type="file" multiple accept="*.jpg, *.jpeg, *.png" class="form-control" name="file" id="file" required>
+                <input type="file" multiple class="form-control" name="file" id="image" onchange="return fileValidation()"  required>
             </div>
         </div>
 
@@ -90,7 +80,7 @@
         <div id="submit-info">
             Formulár obsahuje chyby a nie je možné ho odoslať.
         </div>
-        <input type="submit" name="submit" value="Odoslať" id="submit" class="btn btn-primary">
+        <input type="submit" name="submit" value="Upload" id="submit" class="btn btn-primary">
 
     </form>
   </div>

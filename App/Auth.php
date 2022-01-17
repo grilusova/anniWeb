@@ -9,9 +9,11 @@ class Auth
 
     public static function login($login, $password)
     {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
         $all = Reg::getAll('email=?', [$_POST['email']]);
         foreach ($all as $a) {
-            if (($login == $a->getEmail()) && ($password == $a->getPassword())) {
+            $correctPassword = password_verify($password, $hash);
+            if (($login == $a->getEmail()) && ($correctPassword)) {
                 $_SESSION["name"] = $login;
                 $_SESSION["firstname"] = $a->getFirstName();
                 $_SESSION["lastname"] = $a->getLastName();

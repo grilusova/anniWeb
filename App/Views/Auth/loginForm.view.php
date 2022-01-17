@@ -27,11 +27,11 @@
                 <form method="post" action="?c=auth&a=login">
                     <div class="mb-3">
                         <label for="exampleForControlInput1" class="form-lable">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" required/>
+                        <input type="email" id="email" name="email" class="form-control" pattern="[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleForControlInput2" class="form-lable">Heslo</label>
+                        <label for="exampleForControlInput2" class="form-lable">Password</label>
                         <input type="password" class="form-control" name="password" id="password" required>
                     </div>
                     <button type="submit" id="loginSubmit" class="btn1">Log In</button>

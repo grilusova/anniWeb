@@ -13,18 +13,18 @@
     <?php endif ?>
 
     <button class="btn4 btn-primary my-5">
-        <a class="nav-link" href="?c=home&a=addProduct">Pridaj produkt</a>
+        <a class="nav-link" href="?c=home&a=addProduct">Add Product</a>
     </button>
 
 
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Kód produktu</th>
-            <th scope="col">Názov</th>
-            <th scope="col">Cena</th>
-            <th scope="col">Cena bez DPH</th>
-            <th scope="col">Počet ks</th>
+            <th scope="col">Product Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Price Without VAT</th>
+            <th scope="col">Amount</th>
             <th scope="col">Operations</th>
         </tr>
         </thead>

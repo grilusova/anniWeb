@@ -75,8 +75,8 @@ class HomeController extends AControllerRedirect
                 return;
             }
 
-            if(strlen($password) <= '8' || !preg_match("#[0-9]+#",$password) || !preg_match("#[A-Z]+#",$password) || !preg_match("#[a-z]+#",$password)){
-                $_SESSION['message'] = "Password Must Contain At Least 8 Characters, 1 Number, 1 Capital Letter, 1 Lowercase Letter";
+            if(strlen($password) < '8' || !preg_match("#[0-9]+#",$password) || !preg_match("#[A-Z]+#",$password) || !preg_match("#[a-z]+#",$password)){
+                $_SESSION['message'] = "123514Password Must Contain At Least 8 Characters, 1 Number, 1 Capital Letter, 1 Lowercase Letter";
                 $_SESSION['msg_type'] = "danger";
                 $this->redirect('home', 'registration');
                 return;
@@ -89,7 +89,7 @@ class HomeController extends AControllerRedirect
 
             }else{
                 $registered = self::registered($email);
-
+                $hash = password_hash($password, PASSWORD_DEFAULT);
                 if ($registered) {
                     $_SESSION['message'] = "Email already in use";
                     $_SESSION['msg_type'] = "danger";
@@ -99,7 +99,7 @@ class HomeController extends AControllerRedirect
                     $newReg->setEmail($email);
                     $newReg->setFirstName($firstName);
                     $newReg->setLastName($lastName);
-                    $newReg->setPassword($password);
+                    $newReg->setPassword($hash);
                     $newReg->save();
 
                     $_SESSION['message'] = "You can Log in now";
@@ -176,30 +176,40 @@ class HomeController extends AControllerRedirect
 
 
         if (isset($_FILES['file'])) {
-
             $name1 = $this->request()->getValue('name');
             $product_number= $this->request()->getValue('product_number');
             $price = $this->request()->getValue('price');
             $amount = $this->request()->getValue('amount');
+            $priceP = str_replace(",", ".", $price);
+            $pom = $priceP * 0.2;
+            $price_w_V = $priceP - $pom;
+            $price_w_VAT = str_replace(".", ",", number_format($price_w_V,2));
+
+            if(!preg_match("/\.(gif|png|jpg)$/", $_FILES['file']['name'])) {
+                $_SESSION['message'] = "Wrong type of file";
+                $_SESSION['msg_type'] = "danger";
+                $this->redirect('home', 'addProduct');
+                return;
+            }
 
             if (!preg_match("/[0-9]+/",$product_number)) {
                 $_SESSION['message'] = "You Entered An Invalid Product_number Format";
                 $_SESSION['msg_type'] = "danger";
-                $this->redirect('home', 'registration');
+                $this->redirect('home', 'addProduct');
                 return;
             }
 
             if (!preg_match("/^[0-9]+[,]+[0-9]{2}$/",$price)) {
                 $_SESSION['message'] = "You Entered An Invalid Price Format";
                 $_SESSION['msg_type'] = "danger";
-                $this->redirect('home', 'registration');
+                $this->redirect('home', 'addProduct');
                 return;
             }
 
             if (!preg_match("/^[0-9]+$/",$amount)) {
                 $_SESSION['message'] = "You Entered An Invalid Price Format";
                 $_SESSION['msg_type'] = "danger";
-                $this->redirect('home', 'registration');
+                $this->redirect('home', 'addProduct');
                 return;
             }
 
@@ -217,7 +227,7 @@ class HomeController extends AControllerRedirect
                     $newAdd->setName($name1);
                     $newAdd->setProductNumber($product_number);
                     $newAdd->setPrice($price);
-                    $newAdd->setPriceWithoutVAT($this->request()->getValue('price_withoutVAT'));
+                    $newAdd->setPriceWithoutVAT($price_w_VAT);
                     $newAdd->setAmount($amount);
                     $newAdd->setImage($name);
                     $newAdd->save();
@@ -259,24 +269,59 @@ class HomeController extends AControllerRedirect
             $this->redirect('home');
         }
 
+        $name = $this->request()->getValue('name');
+        $product_number= $this->request()->getValue('product_number');
+        $amount = $this->request()->getValue('amount');
+        $price = $this->request()->getValue('price');
+        $priceP = str_replace(",", ".", $price);
+        $pom = $priceP * 0.2;
+        $price_w_V = $priceP - $pom;
+        $price_w_VAT = str_replace(".", ",", number_format($price_w_V,2));
+
+
+        if (!preg_match("/[0-9]+/",$product_number)) {
+            $_SESSION['message'] = "You Entered An Invalid Product_number Format";
+            $_SESSION['msg_type'] = "danger";
+            $this->redirect('home', 'update');
+            return;
+        }
+
+        if (!preg_match("/^[0-9]+[,]+[0-9]{2}$/",$price)) {
+            $_SESSION['message'] = "You Entered An Invalid Price Format";
+            $_SESSION['msg_type'] = "danger";
+            $this->redirect('home', 'update');
+            return;
+        }
+
+        if (!preg_match("/^[0-9]+$/",$amount)) {
+            $_SESSION['message'] = "You Entered An Invalid Price Format";
+            $_SESSION['msg_type'] = "danger";
+            $this->redirect('home', 'update');
+            return;
+        }
+
+
+        if(empty($name) || empty($product_number) || empty($price) ||  empty($amount)) {
+            $_SESSION['message'] = "You need to fill every field";
+            $_SESSION['msg_type'] = "danger";
+            $this->redirect('home', 'update');
+        }else{
         $productId = $this->request()->getValue('productid');
         if ($productId > 0) {
             $add = Add::getOne($productId);
-            $add->setName($this->request()->getValue('name'));
-            $add->setProductNumber($this->request()->getValue('product_number'));
-            $add->setPrice($this->request()->getValue('price'));
-            $add->setPriceWithoutVAT($this->request()->getValue('price_withoutVAT'));
-            $add->setAmount($this->request()->getValue('amount'));
+            $add->setName($name);
+            $add->setProductNumber($product_number);
+            $add->setPrice($price);
+            $add->setPriceWithoutVAT($price_w_VAT);
+            $add->setAmount($amount);
             $add->save();
 
 
-            $_SESSION['message'] = "Record has been saved!";
+            $_SESSION['message'] = "Record has been updated!";
             $_SESSION['msg_type'] = "success";
-
-
+            $this->redirect('home', 'display');
+            }
         }
-
-        $this->redirect('home', 'display');
     }
 
 
@@ -316,7 +361,7 @@ class HomeController extends AControllerRedirect
                 $newComm->setText($this->request()->getValue('text'));
                 $newComm->save();
 
-                $_SESSION['message'] = "You can Log in now";
+                $_SESSION['message'] = "Review successfully add";
                 $_SESSION['msg_type'] = "success";
 
                 $this->redirect('home', 'productPage');

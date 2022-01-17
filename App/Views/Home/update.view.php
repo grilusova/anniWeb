@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col-11 mb-4">
-                <label>Názov produktu</label>
+                <label>Product Name</label>
                 <input type="text" class="form-control" name="name" id="nameUpdate" value="<?= $add->getName()?>" required>
             </div>
             <div class="col mb-4">
@@ -27,7 +27,7 @@
 
         <div class="row">
             <div class="col-11 mb-4">
-                <label>Číslo produktu</label>
+                <label>Product Number</label>
                 <input type="text" class="form-control" name="product_number" id="product_numberUpdate" pattern="[0-9]+" value="<?= $add->getProductNumber()?>" required>
             </div>
             <div class="col mb-4">
@@ -39,7 +39,7 @@
 
         <div class="row">
             <div class="col-11 mb-4">
-                <label>Cena</label>
+                <label>Price</label>
                 <input type="text" class="form-control" name="price" id="priceUpdate" pattern="[0-9]+[,]+[0-9]{2}" value="<?= $add->getPrice()?>" required>
             </div>
             <div class="col mb-4">
@@ -51,19 +51,7 @@
 
         <div class="row">
             <div class="col-11 mb-4">
-                <label>Cena bez DPH</label>
-                <input type="text" class="form-control" name="price_withoutVAT" id="price_withoutVATUpdate" pattern="[0-9]+[,]+[0-9]{2}" value="<?= $add->getPriceWithoutVAT()?>" required>
-            </div>
-            <div class="col mb-4">
-                <i class="bi bi-question-circle" onmouseover="showHint4()"></i>
-                <p id="otazka4">Musí mať dve desatiné miesta, použite(,)</p>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-11 mb-4">
-                <label>Počet kusov</label>
+                <label>Amount</label>
                 <input type="number" class="form-control" name="amount" id="amountUpdate" pattern="[0-9]+" value="<?= $add->getAmount()?>" required>
             </div>
             <div class="col mb-4">
