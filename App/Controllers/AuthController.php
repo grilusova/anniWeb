@@ -63,7 +63,7 @@ class AuthController extends AControllerRedirect
 
     public function account()
     {
-        $account = Reg::getAll();
+        $account = Reg::getAll('email=?', [$_SESSION['name']]);
         return $this->html(
             [
                 'account' => $account

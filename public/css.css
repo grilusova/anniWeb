@@ -500,6 +500,7 @@ td.riadok{
 
 .pole{
     height: 39px;
+    width: 60%;
 
 }
 
@@ -514,6 +515,7 @@ td.riadok{
     flex-basis: 27%;
     cursor: pointer;
 }
+
 
 
 

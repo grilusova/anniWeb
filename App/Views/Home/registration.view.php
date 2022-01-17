@@ -25,7 +25,7 @@
                                         <i class="re bi-envelope-open fa-lg me-3"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <label for="email">Your Email</label>
-                                            <input type="email" id="email" name="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+                                            <input type="email" id="email" name="email" class="form-control" pattern="[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
                                         </div>
                                     </div>
 

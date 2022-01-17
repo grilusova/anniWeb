@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-11 mb-4">
                 <label for="formFile" class="Form-label">Insert Images</label>
-                <input type="file" multiple accept=".jpg, .png, .gif" name="image[]" id="image" required>
+                <input type="file" multiple accept="image/*" name="image[]" id="image" onchange="return fileValidation()" required>
             </div>
         </div>
 

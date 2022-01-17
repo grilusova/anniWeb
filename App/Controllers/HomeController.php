@@ -350,8 +350,16 @@ class HomeController extends AControllerRedirect
             $this->redirect('home');
         }
 
-        if (isset($_FILES['image'])) {
+        foreach ($_FILES['image']['name'] as $k=>$v) {
+            if(!preg_match("/\.(gif|png|jpg)$/", $_FILES['image']['name'][$k])) {
+                $_SESSION['message'] = "Wrong type of file";
+                $_SESSION['msg_type'] = "danger";
+                $this->redirect('home', 'display');
+                return;
+            }
+        }
 
+        if (isset($_FILES['image'])) {
             $filenames = array_filter($_FILES['image']['name']);
             $number = 1;
             if(!empty($filenames)){
@@ -359,6 +367,7 @@ class HomeController extends AControllerRedirect
                     if ($_FILES["image"]["error"][$key] == UPLOAD_ERR_OK) {
                         $name = date('Y-m-d-H-i-s_') . $_FILES['image']['name'][$key];
                         move_uploaded_file($_FILES['image']['tmp_name'][$key], Configuration::UPLOAD_DIR . "$name");
+
                         $newupload = new Pictures();
                         $newupload->setProductId($this->request()->getValue('id'));
                         $newupload->setImage($name);

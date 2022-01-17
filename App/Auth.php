@@ -9,7 +9,7 @@ class Auth
 
     public static function login($login, $password)
     {
-        $all = Reg::getAll();
+        $all = Reg::getAll('email=?', [$_POST['email']]);
         foreach ($all as $a) {
             if (($login == $a->getEmail()) && ($password == $a->getPassword())) {
                 $_SESSION["name"] = $login;

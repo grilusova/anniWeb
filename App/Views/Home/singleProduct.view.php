@@ -93,7 +93,7 @@
         <?php if ( \App\Auth::isLogged()) { ?>
         <form method="post" action="?c=home&a=addReview">
             <input type="hidden" name="id" value="<?= $add->getId() ?>">
-            <input type="text" name="text" id="text" size="85" class="pole" placeholder="Write your review..."  required>
+            <input type="text" name="text" id="text" class="pole" placeholder="Write your review..."  required>
             <input type="submit" name="comment" value="Send" class="btn3">
         </form>
         <?php } ?>
