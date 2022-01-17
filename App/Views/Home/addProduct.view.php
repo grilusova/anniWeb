@@ -59,7 +59,7 @@
         <div class="row">
             <div class="col-11 mb-4">
                 <label for="amount">Amount</label>
-                <input type="number" class="form-control" pattern="^[0-9]+$" name="amount" id="amount" required>
+                <input type="number" min="0" step="1" class="form-control" name="amount" id="amount" required>
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint5()"></i>
@@ -69,7 +69,7 @@
 
         <div class="row">
             <div class="col-11 mb-4">
-                <label for="formFile" class="Form-label">Image</label>
+                <label class="Form-label">Image</label>
                 <input type="file" multiple class="form-control" name="file" id="image" onchange="return fileValidation()"  required>
             </div>
         </div>

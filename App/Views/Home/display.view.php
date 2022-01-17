@@ -12,10 +12,9 @@
     </div>
     <?php endif ?>
 
-    <button class="btn4 btn-primary my-5">
-        <a class="nav-link" href="?c=home&a=addProduct">Add Product</a>
-    </button>
-
+    <form method="post" action="?c=home&a=addProduct">
+    <button type="submit" class="btn4 btn-primary my-5">Add Product</button>
+    </form>
 
     <table class="table">
         <thead>

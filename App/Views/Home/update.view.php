@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-11 mb-4">
                 <label>Amount</label>
-                <input type="number" class="form-control" name="amount" id="amountUpdate" pattern="[0-9]+" value="<?= $add->getAmount()?>" required>
+                <input type="number" class="form-control" name="amount" id="amountUpdate" min="0" step="1" value="<?= $add->getAmount()?>" required>
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint5()"></i>

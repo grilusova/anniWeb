@@ -207,7 +207,7 @@ class HomeController extends AControllerRedirect
             }
 
             if (!preg_match("/^[0-9]+$/",$amount)) {
-                $_SESSION['message'] = "You Entered An Invalid Price Format";
+                $_SESSION['message'] = "You Entered An Invalid Amount Format";
                 $_SESSION['msg_type'] = "danger";
                 $this->redirect('home', 'addProduct');
                 return;
