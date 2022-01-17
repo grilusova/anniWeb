@@ -502,6 +502,8 @@ td.riadok{
 .pole{
     height: 39px;
     width: 60%;
+    padding-right: 30px;
+    margin-right: 30px;
 
 }
 
@@ -522,7 +524,9 @@ td.riadok{
     margin-left: 30px;
 }
 
-
+.reviewRow .btn3{
+    margin-top: 13px;
+}
 
 
 /*-- add pictures --*/

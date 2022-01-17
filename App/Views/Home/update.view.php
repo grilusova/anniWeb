@@ -20,7 +20,7 @@
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint()"></i>
-                <p id="otazka">Zadaj meno</p>
+                <p id="otazka">Enter a name</p>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint2()"></i>
-                <p id="otazka2">akceptuje len čísla</p>
+                <p id="otazka2">Only accepts numbers</p>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint3()"></i>
-                <p id="otazka3">Musí mať dve desatiné miesta, použite(,)</p>
+                <p id="otazka3">Must have two decimal places use(,)</p>
             </div>
         </div>
 
@@ -56,7 +56,7 @@
             </div>
             <div class="col mb-4">
                 <i class="bi bi-question-circle" onmouseover="showHint5()"></i>
-                <p id="otazka5">Len celé čísla</p>
+                <p id="otazka5">Integers only</p>
             </div>
         </div>
 

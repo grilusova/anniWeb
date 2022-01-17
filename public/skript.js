@@ -137,6 +137,11 @@ window.onload = function (){
     }
 }
 
+function myFunction() {
+    var f = document.getElementById("text");
+    f.value = '';
+}
+
 
 
 
