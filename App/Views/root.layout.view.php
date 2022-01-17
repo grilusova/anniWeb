@@ -14,9 +14,6 @@
 
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jwuery/1.12.4/jquery.min.js"></script>
-
-
     <link rel="stylesheet" href="public/css.css" type="text/css">
 
     <script src="public/skript.js"></script>

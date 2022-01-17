@@ -76,6 +76,67 @@ function fileValidation(){
 }
 
 
+class Comment{
+
+    addReview(){
+        let text = document.getElementById("text").value;
+        let id = document.getElementById("id").value;
+
+
+        if(text.length < 3){
+            alert("Review is too short!");
+            return;
+        }
+
+        fetch("?c=home&a=addReview", {
+            method: 'POST',
+            headers: {
+                 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: "text=" + text +
+                "&id=" + id
+        });
+
+    }
+
+    getAllComments(){
+        fetch('?a=getAllComments')
+            .then(response => response.json())
+            .then(data => {
+                let html = "";
+                let pom = 1;
+                for (let comment of data){
+                    if(document.getElementById("productidreview").value == comment.product_id) {
+                        html += "<tr>";
+                        html += "<td class=\"riadok\">" + pom + "</td>";
+                        html += "<td class=\"riadok\">" + comment.text + "</td>";
+                        html += "</tr>";
+                        pom++;
+                    }
+
+                }
+                document.getElementById("commentbox").innerHTML = html;
+            });
+    }
+
+    startCommentsReloading(){
+        setInterval(()=> {
+            this.getAllComments()
+        }, 1000)
+    }
+}
+
+window.onload = function (){
+    var comment = new Comment();
+
+    comment.getAllComments();
+    comment.startCommentsReloading();
+
+    document.getElementById("reviewOdoslat").onclick = () => {
+        comment.addReview();
+    }
+}
+
 
 
 

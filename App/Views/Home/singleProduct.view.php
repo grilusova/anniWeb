@@ -5,12 +5,12 @@
         $add = $post;
     }}?>
 
-<section class="container sproduct my-5 pt-5">
+<section class="container sproduct my-3 pt-4">
     <div class="row mt-5">
 
-        <div class="picture col-lg-5 col-md-12 col-12">
+        <div class="picture col-lg-4 col-md-12 col-12">
             <div class="row">
-            <img class="img-fluid w-100 pb-1" src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>" alt="..." id="MainImg" onclick="clickme(this)">
+            <img class="mainpicture img-fluid w-70 pb-1" src="<?= \APP\Config\Configuration::UPLOAD_DIR . $add->getImage() ?>" alt="..." id="MainImg" onclick="clickme(this)">
 
             <div class="small-img-group">
                 <div class="small-image-col">
@@ -66,7 +66,7 @@
         </div>
 
 
-
+        <input type="hidden" id="productidreview" value="<?= $add->getId() ?>">
 
         <hr class="dark">
         <p class="reviews text-center">Reviews</p>
@@ -75,27 +75,16 @@
         <table class="table">
 
 
-            <tbody>
-            <?php $pom = 1; ?>
-            <?php foreach ($data['comm'] as $comm) { ?>
-                <tr>
-                    <?php if($comm->getProductId() == $_SESSION['id']){ ?>
-                    <td class="riadok"><?php echo $pom ?></td>
-                    <td class="riadok"><?php echo $comm->getText() ?></td>
-                </tr>
-                <?php $pom++; } ?>
-            <?php } ?>
-
+            <tbody id="commentbox">
 
             </tbody>
         </table>
 
         <?php if ( \App\Auth::isLogged()) { ?>
-        <form method="post" action="?c=home&a=addReview">
-            <input type="hidden" name="id" value="<?= $add->getId() ?>">
-            <input type="text" name="text" id="text" class="pole" placeholder="Write your review..."  required>
-            <input type="submit" name="comment" value="Send" class="btn3">
-        </form>
+            <input type="hidden" id="id" name="id" value="<?= $add->getId() ?>">
+            <input type="text" onfocusout="Write your review..." name="text" id="text" class="pole" placeholder="Write your review..."  required>
+            <button id="reviewOdoslat" class="btn3">Send</button>
         <?php } ?>
+
     </div>
 </section>

@@ -328,7 +328,6 @@ class HomeController extends AControllerRedirect
     public function singleProduct()
     {
         $adds = Add::getAll();
-        $comm = Comment::getAll();
         $pics = Pictures::getAll();
         $_SESSION['id'] = $this->request()->getValue('productid');
 
@@ -336,12 +335,19 @@ class HomeController extends AControllerRedirect
         return $this->html(
             [
                 'adds' => $adds,
-                'comm' => $comm,
                 'pics' => $pics
 
             ]
         );
     }
+
+    public function getAllComments()
+    {
+        $comm = Comment::getAll();
+        return $this->json($comm);
+    }
+
+
 
 
     public function addReview()
@@ -349,26 +355,18 @@ class HomeController extends AControllerRedirect
         if (!Auth::isLogged()) {
             $this->redirect('home');
         }
-        if (isset($_POST['comment'])) {
+
             $review = $this->request()->getValue('text');
-            if(empty($review)){
-                $_SESSION['message'] = "Field needs to be fill";
-                $_SESSION['msg_type'] = "danger";
-                $this->redirect('home', 'productPage');
-            }else{
-                $newComm = new Comment();
-                $newComm->setProductId($this->request()->getValue('id'));
-                $newComm->setText($this->request()->getValue('text'));
-                $newComm->save();
+            $productId = $this->request()->getValue('id');
 
-                $_SESSION['message'] = "Review successfully add";
-                $_SESSION['msg_type'] = "success";
-
-                $this->redirect('home', 'productPage');
+            if(strlen($review)<3) {
+                return $this->json('error');
             }
 
-        }
-
+                $newComm = new Comment();
+                $newComm->text = $review;
+                $newComm->product_id = $productId;
+                $newComm->save();
     }
 
 

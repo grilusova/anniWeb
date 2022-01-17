@@ -2,7 +2,7 @@
 
 
 <!--Image slider-->
-
+<div class="container-fluid">
 <div id="carousel" class="carousel slide" data-ride="carousel">
 
     <div class="carousel-indicators">
@@ -35,7 +35,7 @@
     </button>
 
 </div>
-
+</div>
 
 <!--Categories-->
 
